@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lic. María de los Ángeles Taborda | Psicoanálisis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-fondo: #fcfbf9; /* Un tono apenas más cálido */
+            --color-texto: #44403c; 
+            --color-acento: #8c7851; 
+            --blanco: #ffffff;
+            --gris-suave: #e7e5e4;
+            --sombra-soft: 0 20px 40px rgba(140, 120, 81, 0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            /* Sutil textura de grano para dar calidez */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3仿真%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+            opacity: 0.98;
+            color: var(--color-texto);
+            line-height: 1.8;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+
+        p, input, textarea, button, summary, span, a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1, h2, h3 { letter-spacing: -0.5px; }
+
+        /* --- MENÚ DE NAVEGACIÓN --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(231, 229, 228, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-weight: 400;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--color-acento);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-texto);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        nav a:hover { color: var(--color-acento); opacity: 1; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text { flex: 1.2; min-width: 320px; }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.1;
+            color: #2d2a26;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--color-acento);
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--gris-suave);
+            padding: 12px;
+            background: var(--blanco);
+            box-shadow: var(--sombra-soft);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .profile-img:hover { transform: scale(1.03) rotate(1deg); }
+
+        /* --- CONTENEDOR GENERAL --- */
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .seccion-info { text-align: center; margin-bottom: 100px; }
+        .seccion-info h2 { font-size: 2.2rem; margin-bottom: 25px; font-weight: 400; }
+
+        .grid-ejes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin: 100px 0;
+            text-align: center;
+        }
+
+        .eje { padding: 20px; }
+        .eje i { color: var(--color-acento); font-size: 26px; margin-bottom: 20px; opacity: 0.7; }
+        .eje h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* --- FAQ --- */
+        .faq-section { margin-bottom: 120px; }
+
+        details {
+            background: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border: 1px solid var(--gris-suave);
+            transition: all 0.3s ease;
+        }
+
+        details:hover { border-color: var(--color-acento); background: var(--blanco); }
+
+        summary { 
+            font-weight: 500; 
+            cursor: pointer; 
+            outline: none; 
+            display: flex; 
+            justify-content: space-between;
+            font-size: 1.05rem;
+        }
+
+        summary span { color: var(--color-acento); font-size: 1.2rem; }
+
+        /* --- CONTACTO --- */
+        .contacto-card {
+            background: var(--blanco);
+            padding: 60px;
+            border: 1px solid var(--gris-suave);
+            border-radius: 15px;
+            box-shadow: var(--sombra-soft);
+        }
+
+        .btn-principal {
+            display: inline-block;
+            background-color: var(--color-acento);
+            color: white;
+            padding: 20px 45px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .btn-principal:hover {
+            background-color: var(--color-texto);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .wsp-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        
+        .wsp-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.8rem; text-align: center; }
+            .hero-container { flex-direction: column-reverse; text-align: center; }
+            .contacto-card { padding: 30px; }
+            .logo { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Lic. M. Taborda</div>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main class="fade-in">
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Lic. María de los Ángeles Taborda</h1>
+                <p>"La palabra como herramienta para nombrar el malestar."</p>
+                <a href="#contacto" class="btn-principal" style="width: auto;">Solicitar consulta</a>
+            </div>
+            <div class="hero-image">
+                <img src="taborda.jpg" alt="Lic. María de los Ángeles Taborda" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <section class="seccion-info">
+            <h2>Sobre mi</h2>
+            <p>Soy licenciada en Psicología gracias a la Educación Pública. Estudié en la Universidad Autónoma de Entre Ríos. Tengo una especialización en clínica en infancias y adolescencias, aunque atiendo todas las edades.</p>
+        </section>
+
+        <section class="seccion-info">
+            <h2>Sobre mi Práctica</h2>
+            <p>Mi práctica se orienta desde una perspectiva psicoanalítica, priorizando la escucha singular de cada persona y el respeto por sus tiempos y procesos.</p>
+        </section>
+
+        <section class="seccion-info">
+            <h2>Mi forma de trabajo</h2>
+            <p>Trabajo ofreciendo un espacio de escucha y sin juicios, donde cada persona pueda poner en palabras aquello que le sucede. Entiendo el malestar como algo que tiene un sentido, por eso no busco dar respuestas rápidas, sino acompañar un proceso que permita comprender, elaborar y producir cambios posibles.</p>
+        </section>
+
+        <section class="grid-ejes">
+            <div class="eje">
+                <i class="fas fa-feather-alt"></i>
+                <h3>Clínica de Niñeces</h3>
+                <p>Abordaje a través del juego y el dibujo, permitiendo que el niño tramite sus conflictos en su propio lenguaje.</p>
+            </div>
+            <div class="eje">
+                <i class="fas fa-comments"></i>
+                <h3>Adolescencias</h3>
+                <p>Un espacio de escucha para transitar los desafíos y las búsquedas de esta etapa vital.</p>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 style="text-align: center; font-weight: 400; margin-bottom: 50px;">Preguntas Frecuentes</h2>
+            <details>
+                <summary>¿Cómo es la modalidad de las sesiones? <span>+</span></summary>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #666;">Las sesiones tienen una frecuencia semanal y una duración aproximada de 45 minutos.</p>
+            </details>
+            <details>
+                <summary>¿Qué temas se pueden trabajar en terapia? <span>+</span></summary>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #666;">Ansiedad, angustia, dificultades vinculares, situaciones de crisis, entre otros. No es necesario "saber qué decir" para comenzar.</p>
+            </details>
+            <details>
+                <summary>¿Qué pasa si no puedo asistir a una sesión? <span>+</span></summary>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #666;">Es importante avisar con anticipación. Las ausencias sin aviso serán consideradas como sesión tomada.</p>
+            </details>
+            <details>
+                <summary>¿Lo que digo en sesión es confidencial? <span>+</span></summary>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #666;">Sí. El espacio terapéutico está regido por el secreto profesional.</p>
+            </details>
+        </section>
+
+        <section id="contacto" class="contacto-card">
+            <h2 style="text-align: center; font-weight: 400; margin-top: 0; margin-bottom: 40px;">Contacto</h2>
+            <div style="text-align: center; margin-bottom: 40px; color: #78716c; font-size: 0.95rem;">
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--color-acento);"></i> Barón Hirsch 379, Basavilbaso, Entre Ríos</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px; color: var(--color-acento);"></i> mariadlangelestaborda@gmail.com</p>
+				<p><i class="fas fa-phone" style="margin-right: 10px; color: var(--color-acento);"></i> 03442-488302</p>
+            </div>
+            
+            <form>
+                <input type="text" placeholder="Nombre completo" required style="width: 100%; padding: 18px; border: 1px solid #ddd; margin-bottom: 15px; box-sizing: border-box; border-radius: 6px; background: var(--color-fondo);">
+                <input type="email" placeholder="Correo electrónico" required style="width: 100%; padding: 18px; border: 1px solid #ddd; margin-bottom: 15px; box-sizing: border-box; border-radius: 6px; background: var(--color-fondo);">
+                <textarea placeholder="Déjame tu consulta aquí..." rows="4" style="width: 100%; padding: 18px; border: 1px solid #ddd; margin-bottom: 25px; box-sizing: border-box; border-radius: 6px; background: var(--color-fondo);"></textarea>
+                <button type="submit" class="btn-principal">Enviar mensaje</button>
+            </form>
+        </section>
+    </div>
+</main>
+
+<footer style="text-align: center; padding: 80px 20px; color: #a8a29e; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;">
+    <p style="margin-bottom: 10px;">© 2026 LIC. MARÍA DE LOS ÁNGELES TABORDA | BASAVILBASO, ENTRE RÍOS</p>
+    <p style="font-size: 0.6rem; opacity: 0.7; letter-spacing: 3px; font-weight: 400;">
+        Desarrollado por <span style="color: var(--color-acento);">DANIEL WALLINGRE</span>
+    </p>
+</footer>
+
+<a href="https://wa.me/543442488302" class="wsp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
